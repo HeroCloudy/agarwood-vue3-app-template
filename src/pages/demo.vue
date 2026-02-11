@@ -6,6 +6,10 @@
 -->
 <template>
   <div class="demo">
+    <div>
+      <div class="text-2xl text-danger">{{ $t('demo.title') }}</div>
+      <div>{{ $t('demo.info') }}</div>
+    </div>
     <h2>Pinia 测试</h2>
     <h3>计数器: {{ counter }}</h3>
     <button @click="demoStore.increment()">点击+1</button>
@@ -77,6 +81,12 @@ const toggleTheme = () => {
   const currentTheme = html.getAttribute('data-theme')
   html.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark')
 }
+
+definePage({
+  meta: {
+    locales: ['demo'],
+  },
+})
 </script>
 <style scoped lang="scss">
 .demo-text {
