@@ -5,11 +5,14 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import VueRouter from 'unplugin-vue-router/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
+    VueRouter({}),
+    // ⚠️ Vue must be placed after VueRouter()
     vue(),
     vueJsx(),
     UnoCSS(), // 配置 SVG 图标插件
