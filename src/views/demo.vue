@@ -41,18 +41,32 @@
         class="i-twemoji-grinning-face-with-smiling-eyes hover:i-twemoji-face-with-tears-of-joy"
       />
     </div>
-  </div>
-  <div>
-    <div>SVG 图标</div>
-    <svg aria-hidden="true" class="svg">
-      <use href="#icon-demo" fill="red" />
-    </svg>
+    <div>
+      <div>SVG 图标</div>
+      <svg aria-hidden="true" class="svg">
+        <use href="#icon-demo" fill="red" />
+      </svg>
+    </div>
+
+    <div>
+      <div>图标组件测试</div>
+      <icon type="iconify" icon="mdi:user" class="size-8 text-primary" />
+      <icon type="uno" icon="i-mdi:user" class="size-8 text-primary" />
+      <icon type="svg" icon="demo" class="text-primary size-8!" />
+      <icon
+        type="iconfont"
+        font-url="//at.alicdn.com/t/c/font_3457715_h47rhjpli3n.css"
+        icon="mobile-alt"
+        class="text-primary text-2xl!"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useDemoStore } from '@/stores/modules/demo'
 import { storeToRefs } from 'pinia'
+import Icon from '@/components/icon/icon.vue'
 
 // 初始化 Store 实例
 const demoStore = useDemoStore()
