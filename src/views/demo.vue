@@ -42,6 +42,12 @@
       />
     </div>
   </div>
+  <div>
+    <div>SVG 图标</div>
+    <svg aria-hidden="true" class="svg">
+      <use href="#icon-demo" fill="red" />
+    </svg>
+  </div>
 </template>
 
 <script setup lang="ts">
