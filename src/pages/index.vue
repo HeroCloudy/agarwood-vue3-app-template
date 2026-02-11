@@ -6,6 +6,7 @@
 -->
 <template>
   <h1 class="index">index page</h1>
+  <div>{{ appName }}</div>
   <div>{{ msg }}</div>
   <div>isDark: {{ isDark }}</div>
   <button @click="toggleDark()">Toggle</button>
@@ -22,5 +23,7 @@ const isDark = useDark({
 })
 
 const toggleDark = useToggle(isDark)
+
+const appName = import.meta.env?.VITE_APP_NAME ?? ''
 </script>
 <style scoped lang="scss"></style>

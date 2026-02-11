@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
@@ -13,41 +13,45 @@ import Components from 'unplugin-vue-components/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    VueRouter({}),
-    // ⚠️ Vue must be placed after VueRouter()
-    vue(),
-    vueJsx(),
-    UnoCSS(), // 配置 SVG 图标插件
-    createSvgIconsPlugin({
-      // SVG 图标目录
-      iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
-      // 生成的 symbol ID 格式
-      symbolId: 'icon-[dir]-[name]',
-    }),
-    Layouts({
-      layoutsDirs: 'src/layouts',
-      defaultLayout: 'default',
-    }),
-    AutoImport({
-      include: [
-        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue$/,
-        /\.vue\?vue/, // .vue
-        /\.md$/, // .md
-      ],
-      imports: ['vue', VueRouterAutoImports, 'pinia', '@vueuse/core'],
-    }),
-    Components({
-      deep: true,
-      directoryAsNamespace: false,
-    }),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), 'VITE_')
+  console.log(env)
+  return {
+    plugins: [
+      VueRouter({}),
+      // ⚠️ Vue must be placed after VueRouter()
+      vue(),
+      vueJsx(),
+      UnoCSS(), // 配置 SVG 图标插件
+      createSvgIconsPlugin({
+        // SVG 图标目录
+        iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
+        // 生成的 symbol ID 格式
+        symbolId: 'icon-[dir]-[name]',
+      }),
+      Layouts({
+        layoutsDirs: 'src/layouts',
+        defaultLayout: 'default',
+      }),
+      AutoImport({
+        include: [
+          /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+          /\.vue$/,
+          /\.vue\?vue/, // .vue
+          /\.md$/, // .md
+        ],
+        imports: ['vue', VueRouterAutoImports, 'pinia', '@vueuse/core'],
+      }),
+      Components({
+        deep: true,
+        directoryAsNamespace: false,
+      }),
+      vueDevTools(),
+    ],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
+      },
     },
-  },
+  }
 })
