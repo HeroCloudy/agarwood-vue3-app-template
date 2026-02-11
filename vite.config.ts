@@ -9,6 +9,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VueRouterAutoImports } from 'unplugin-vue-router'
+import Components from 'unplugin-vue-components/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
@@ -37,6 +38,10 @@ export default defineConfig({
         /\.md$/, // .md
       ],
       imports: ['vue', VueRouterAutoImports, 'pinia', '@vueuse/core'],
+    }),
+    Components({
+      deep: true,
+      directoryAsNamespace: false,
     }),
     vueDevTools(),
   ],

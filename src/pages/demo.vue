@@ -65,8 +65,6 @@
 
 <script setup lang="ts">
 import { useDemoStore } from '@/stores/modules/demo'
-import { storeToRefs } from 'pinia'
-import Icon from '@/components/icon/icon.vue'
 
 // 初始化 Store 实例
 const demoStore = useDemoStore()
