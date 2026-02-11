@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, computed, withDefaults, defineProps } from 'vue'
+import { onBeforeMount, computed } from 'vue'
 import { Icon as IconifyIcon } from '@iconify/vue'
 
 defineOptions({ name: 'Icon' })
