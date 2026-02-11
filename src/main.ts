@@ -5,11 +5,13 @@ import { installRouter } from './router'
 import { installStore } from '@/stores'
 import { installAssets } from '@/plugins/assets'
 import { Env } from '@/utils/env.ts'
+import { installI18n } from '@/i18n'
 
 const app = createApp(App)
 
 installRouter(app)
 installStore(app)
+installI18n(app)
 installAssets()
 
 // 获取当前模式
